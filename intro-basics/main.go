@@ -4,36 +4,134 @@ package main
 import (
   "fmt"
   // "strings"
-  "sort"
+  // "sort"
 )
 
-// ===== STANDARD LIBRARY
-func main() {
-  // = "strings" package
-  // greeting := "Hello there friends!"
-
-  // fmt.Println(strings.Contains(greeting, "Hello"))
-  // fmt.Println(strings.ReplaceAll(greeting, "Hello", "Ni hao"))
-  // fmt.Println(strings.ToUpper(greeting))
-  // fmt.Println(strings.Index(greeting, "friends")) // 12
-  // fmt.Println(strings.Split(greeting, " ")) // [Hello there friends!]
-
-  // = "sort" package
-  ages := []int{45, 20, 35, 30, 75, 60, 50, 25}
-  
-  sort.Ints(ages) // alters original var!
-  fmt.Println(ages)
-
-  index := sort.SearchInts(ages, 30)
-  fmt.Printf("index of %v inside %v is: %v \n", 30, ages, index)
-  fmt.Println(index)
-
-  names := []string{"yoshi", "mario", "peach", "bowser", "luigi"}
-  sort.Strings(names) // mutates the slice
-  fmt.Println(names)
-
-  fmt.Println(sort.SearchStrings(names, "bowser")) // 0
+// ===== FUNCTIONS
+func sayGreeting(name string) {
+  fmt.Printf("Good morning, %v \n", name)
 }
+
+func sayBye(name string) {
+  fmt.Printf("Goodbye, %v \n", name)
+}
+
+func cycleNames(n []string, f func(string)) {
+  for _,v := range n {
+    f(v)
+  }
+}
+
+func main() {
+  // sayGreeting("luigi")
+  // sayBye("peach")
+
+  names := []string{"mario", "peach", "bowser", "luigi"}
+
+  cycleNames(names, sayGreeting)
+  cycleNames([]string{"cloud", "tifa", "barret"}, sayBye)
+}
+
+// ===== BOOLEANS & CONDITIONALS
+// func main() {
+//   age := 45
+
+//   fmt.Println(age <= 50)
+//   fmt.Println(age >= 50)
+//   fmt.Println(age == 45)
+//   fmt.Println(age != 50)
+
+//   if age < 30 {
+//     fmt.Println("age is less than 30")
+//   } else if age < 40 {
+//     fmt.Println("age is less than 40")
+//   } else {
+//     fmt.Println("age is NOT less than 45")
+//   }
+
+//   // string Slice (not Array!)
+//   names := []string{"mario", "luigi", "yoshi", "peach", "bowser"}
+  
+//   for i, v := range names {
+//     if i == 1 {
+//       fmt.Println("continuing at pos:", i)
+//       continue // Goes back to top FOR loop (skips remaining code)
+//     }
+//     if i > 2 {
+//       fmt.Println("breaking at pos:", i)
+//       break // Breaks out of the FOR loop completely
+//     }
+
+//     fmt.Printf("the value at pos %v is %v \n", i, v)
+//   }
+// }
+
+
+
+// ===== LOOPS
+// func main() {
+//   // x := 0
+//   // for x < 5 {
+//   //   fmt.Println("value of x is:", x)
+//   //   x++
+//   // }
+
+//   // for i := 0; i < 5; i++ {
+//   //   fmt.Println("value of i is:", i)
+//   // }
+
+//   names := []string{"mario", "luigi", "yoshi", "peach"}
+
+//   // = For loop shorthand
+//   // for i := 0; i < len(names); i++ {
+//   //   fmt.Println("name is", names[i])
+//   // }
+
+//   // = For IN loops
+//   // for index, value := range names {
+//   //   fmt.Printf("position at index is %v and value is %v \n", index, value)
+//   // }
+
+//   // = For IN loop w/o index
+//   for _, value := range names {
+//     fmt.Printf("value is %v \n", value)
+//     value = "new string" // does NOT alter original!
+//   }
+
+//   fmt.Println(names) // [mario luigi yoshi peach]
+
+// }
+
+
+
+
+// ===== STANDARD LIBRARY
+// func main() {
+//   // = "strings" package
+//   // greeting := "Hello there friends!"
+
+//   // fmt.Println(strings.Contains(greeting, "Hello"))
+//   // fmt.Println(strings.ReplaceAll(greeting, "Hello", "Ni hao"))
+//   // fmt.Println(strings.ToUpper(greeting))
+//   // fmt.Println(strings.Index(greeting, "friends")) // 12
+//   // fmt.Println(strings.Split(greeting, " ")) // [Hello there friends!]
+
+//   // = "sort" package
+//   ages := []int{45, 20, 35, 30, 75, 60, 50, 25}
+  
+//   sort.Ints(ages) // alters original var!
+//   fmt.Println(ages)
+
+//   index := sort.SearchInts(ages, 30)
+//   fmt.Printf("index of %v inside %v is: %v \n", 30, ages, index)
+//   fmt.Println(index)
+
+//   names := []string{"yoshi", "mario", "peach", "bowser", "luigi"}
+//   sort.Strings(names) // mutates the slice
+//   fmt.Println(names)
+
+//   fmt.Println(sort.SearchStrings(names, "bowser")) // 0
+// }
 
 
 
